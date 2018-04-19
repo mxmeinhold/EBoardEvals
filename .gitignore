@@ -1,0 +1,6 @@
+config.py
+.idea
+eboardevals/__pycache__
+.eboardevals
+eboardevals/__init__.pyc
+eboardevals/ldap.pyc

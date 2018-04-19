@@ -1,0 +1,5 @@
+Flask
+Flask-Migrate
+Flask-pyoidc
+Flask-SQLAlchemy
+csh_ldap>=2.0.2

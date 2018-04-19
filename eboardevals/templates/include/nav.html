@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/">EBoardEvals</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li>
+                    <a class="nav-link" href="/new"><i class="fas fa-plus"></i> Create Eval</a>
+                </li>
+                {% if info.is_eboard %}
+                    <li>
+                        <a class="nav-link" href="/admin"><i class="fas fa-lock"></i> Admin</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/archive"><i class="fas fa-list"></i> Archive</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <div class="nav-item navbar-user text-white">
+                    <img src="https://profiles.csh.rit.edu/image/{{ info.uid }}">
+                    {{ info.uid }}
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+
