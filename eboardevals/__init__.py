@@ -28,6 +28,7 @@ db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
 
+# pylint: disable=C0413
 from eboardevals.utils import before_request
 
 
