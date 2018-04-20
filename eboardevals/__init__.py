@@ -1,7 +1,7 @@
 import os
 
 import csh_ldap
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from flask_migrate import Migrate
 from flask_pyoidc.flask_pyoidc import OIDCAuthentication
 from flask_sqlalchemy import SQLAlchemy
@@ -36,13 +36,26 @@ from eboardevals.utils import before_request
 @auth.oidc_auth
 @before_request
 def main(info=None):
+    if info['is_eboard']:
+        return redirect("/admin")
+    return redirect("/new")
+
+
+@app.route("/new")
+@auth.oidc_auth
+@before_request
+def new(info=None):
     return render_template(
-        "index.html",
+        "new.html",
         info=info
     )
 
 
-if __name__ == "__main__":
-    app.run()
-
-application = app
+@app.route("/admin")
+@auth.oidc_auth
+@before_request
+def admin(info=None):
+    return render_template(
+        "admin.html",
+        info=info
+    )
