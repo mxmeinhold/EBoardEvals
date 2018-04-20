@@ -8,6 +8,32 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+
+        <form name="evalform" method="post" id="evalForm" action="/eval">
+            <div class="card m-3">
+                <div class="card-body">
+                    <div class="form-group label-floating is-empty">
+                        <label for="likes" class=" control-label">What You Like?</label>
+
+                        <textarea name="likes" class="form-control" rows="3" id="likes"></textarea>
+                        <span class="help-block">What do you like about this director?</span>
+
+                        <span class="material-input"></span><span class="material-input"></span></div>
+                </div>
+            </div>
+
+            <div class="card m-3">
+                <div class="card-body">
+                    <div class="form-group label-floating is-empty">
+                        <label for="dislikes" class=" control-label">What You Dislike?</label>
+
+                        <textarea name="dislikes" class="form-control" rows="3" id="dislikes"></textarea>
+                        <span class="help-block">What do you dislike about this director?</span>
+
+                        <span class="material-input"></span><span class="material-input"></span></div>
+                </div>
+            </div>
+        </form>
     </div>
 {% endblock %}
 
