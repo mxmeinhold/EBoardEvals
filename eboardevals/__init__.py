@@ -7,6 +7,7 @@ from flask_pyoidc.flask_pyoidc import OIDCAuthentication
 from flask_sqlalchemy import SQLAlchemy
 
 # Create the initial Flask Object
+
 app = Flask(__name__)
 
 # Check if deployed on OpenShift, if so use environment.
@@ -30,6 +31,7 @@ migrate = Migrate(app, db)
 
 # pylint: disable=C0413
 from eboardevals.utils import before_request
+from eboardevals.ldap import ldap_get_eboard
 
 
 @app.route("/")
@@ -45,9 +47,11 @@ def main(info=None):
 @auth.oidc_auth
 @before_request
 def new(info=None):
+    eboard = ldap_get_eboard()
     return render_template(
         "new.html",
-        info=info
+        info=info,
+        eboard=eboard
     )
 
 
@@ -55,7 +59,19 @@ def new(info=None):
 @auth.oidc_auth
 @before_request
 def admin(info=None):
-    return render_template(
-        "admin.html",
-        info=info
-    )
+    if info['is_eboard']:
+        return render_template(
+            "admin.html",
+            info=info
+        )
+
+
+@app.route("/archive")
+@auth.oidc_auth
+@before_request
+def archive(info=None):
+    if info['is_eboard']:
+        return render_template(
+            "archive.html",
+            info=info
+        )

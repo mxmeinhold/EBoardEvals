@@ -18,6 +18,17 @@
 
             <div class="card m-3">
                 <div class="card-body">
+                    <label for="eboard-member" class="col-form-label">EBoard Member</label>
+                    <select class="select2-select" id="eboard-member" name="eboard-member">
+                        {% for member in eboard %}
+                            <option value="{{ member.uid }}">{{ member.cn }} ({{ member.uid }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="card m-3">
+                <div class="card-body">
                     <div class="form-group label-floating is-empty">
                         <label for="likes" class=" control-label">What You Like?</label>
 
