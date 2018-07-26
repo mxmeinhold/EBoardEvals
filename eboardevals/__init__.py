@@ -64,6 +64,7 @@ def admin(info=None):
             "admin.html",
             info=info
         )
+    return 403
 
 
 @app.route("/archive")
@@ -75,3 +76,4 @@ def archive(info=None):
             "archive.html",
             info=info
         )
+    return 403
